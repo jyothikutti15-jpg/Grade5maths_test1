@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 Grade 5 Math — SBAC Test Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sun:#FFD93D;--sky:#87CEEB;--green:#6BCB77;--orange:#FF8C42;
+  --pink:#FF6B9D;--blue:#4D96FF;--purple:#A66CFF;--red:#FF6B6B;
+  --teal:#2EC4B6;--wood:#D4A574;--cream:#FFFDF5;--dark:#1B2838;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;min-height:100vh;background:var(--cream);overflow-x:hidden}
+
+/* BG */
+.bg{position:fixed;inset:0;z-index:0;
+  background:linear-gradient(170deg,#E3F2FD 0%,#FFF8E1 35%,#FFFDF5 55%,#E8F5E9 80%,#C8E6C9 100%)}
+.bg-shape{position:absolute;border-radius:50%;opacity:0.07;animation:float 25s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+
+.app{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:14px}
+
+/* HEADER */
+.hdr{text-align:center;margin-bottom:10px}
+.hdr h1{font-family:'Baloo 2',cursive;font-size:32px;font-weight:800;color:var(--dark);line-height:1.1}
+.hdr h1 span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hdr .sub{font-size:13px;color:#7B8FA3;font-weight:700;margin-top:2px}
+.badge{display:inline-block;background:var(--blue);color:white;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;margin-left:6px;vertical-align:middle}
+
+/* SCORE */
+.sbar{display:flex;justify-content:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.spill{background:white;border-radius:30px;padding:5px 16px;display:flex;align-items:center;gap:7px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);border:2px solid #EDE7D9}
+.spill .ic{font-size:18px}.spill .vl{font-family:'Baloo 2';font-size:18px;font-weight:800;color:var(--dark)}
+.spill .lb{font-size:9px;color:#8899A6;font-weight:700;text-transform:uppercase}
+
+/* DOMAIN TABS */
+.dtabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.dtab{padding:8px 14px;border-radius:14px;cursor:pointer;transition:all .25s;
+  background:white;border:2.5px solid #E8E0D0;font-family:'Baloo 2';font-size:12px;
+  font-weight:700;color:#7B8FA3;box-shadow:0 2px 0 #E8E0D0;user-select:none;text-align:center;line-height:1.2}
+.dtab:hover{transform:translateY(-2px);border-color:#C8C0B0}
+.dtab.act{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,white);box-shadow:0 2px 0 var(--accent)}
+.dtab .di{font-size:20px;display:block}
+
+/* MAIN CARD */
+.mcard{background:white;border-radius:24px;padding:24px;border:2.5px solid #EDE7D9;
+  box-shadow:0 6px 28px rgba(0,0,0,0.07);min-height:380px;animation:sUp .35s ease-out}
+@keyframes sUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* PROGRESS */
+.prow{display:flex;gap:5px;justify-content:center;margin-bottom:14px}
+.pd{width:13px;height:13px;border-radius:50%;background:#EDE7D9;border:2px solid #DDD5C5;transition:.3s}
+.pd.ok{background:var(--green);border-color:var(--green)}.pd.no{background:var(--red);border-color:var(--red)}
+.pd.cur{background:var(--sun);border-color:var(--sun);animation:pul 1s infinite}
+@keyframes pul{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+/* STANDARD TAG */
+.std-tag{display:inline-block;background:#EDE7D9;color:#7B6F5C;font-size:10px;font-weight:800;
+  padding:3px 10px;border-radius:8px;margin-bottom:10px;letter-spacing:.5px}
+
+/* STORY */
+.story{background:linear-gradient(135deg,#FFFBF0,#FFF8E1);border-radius:18px;padding:18px;
+  border:2px solid #F5ECD3;margin-bottom:16px;position:relative;overflow:hidden}
+.story::after{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;
+  background:radial-gradient(circle,rgba(255,217,61,.12),transparent 70%);border-radius:50%}
+.st-row{display:flex;align-items:flex-start;gap:12px}
+.st-ico{font-size:40px;flex-shrink:0;line-height:1}
+.st-txt{font-size:14px;color:#4A3728;font-weight:600;line-height:1.55}
+.st-txt b{color:#1B2838}
+.st-q{font-family:'Baloo 2';font-size:20px;font-weight:800;color:var(--dark);margin-top:10px;
+  text-align:center;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.7);border:2px dashed var(--wood)}
+
+/* ILLUSTRATION */
+.illust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:14px 0;align-items:center}
+.ill-grp{text-align:center}
+.ill-lbl{font-family:'Baloo 2';font-size:12px;font-weight:700;color:#8B9DAF;margin-top:4px}
+
+/* ═══ STEPS — NOW FULLY OPAQUE ═══ */
+.solver{background:#F5F0E8;border-radius:18px;padding:18px;border:2px solid #E8DDD0;margin:14px 0}
+.solver-t{font-family:'Baloo 2';font-size:16px;font-weight:800;color:#4A3728;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;padding:10px 12px;border-radius:12px;
+  border:2px solid transparent;transition:all .3s}
+/* HIDDEN STEP: covered by opaque overlay */
+.step.locked{position:relative;overflow:hidden;pointer-events:none}
+.step.locked::after{content:'🔒 Click "Show Steps" to reveal';position:absolute;inset:0;
+  background:rgba(90,75,55,.92);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;border-radius:12px;
+  font-family:'Baloo 2';font-size:13px;font-weight:700;color:#F0E6D0;letter-spacing:.3px}
+.step.active{background:rgba(77,150,255,.08);border-color:rgba(77,150,255,.25)}
+.step.done{background:rgba(107,203,119,.08);border-color:rgba(107,203,119,.18)}
+.sn{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo 2';font-size:14px;font-weight:800;flex-shrink:0;background:#E0D8C8;color:#7B8FA3}
+.step.active .sn{background:var(--blue);color:white}
+.step.done .sn{background:var(--green);color:white}
+.sc{flex:1}.sl{font-size:12px;font-weight:700;color:#8899A6;margin-bottom:3px}
+.sm{font-family:'Baloo 2';font-size:20px;font-weight:800;color:var(--dark);line-height:1.3}
+.se{font-size:11px;color:#8899A6;margin-top:3px;font-weight:600}
+.hl{display:inline-block;background:rgba(255,217,61,.3);padding:1px 7px;border-radius:7px;border-bottom:3px solid var(--sun)}
+
+.hint-btn{padding:6px 16px;border-radius:10px;border:2px solid #D4C4A8;background:#FFF8E7;
+  cursor:pointer;font-family:'Nunito';font-size:12px;font-weight:700;color:#8B7355;transition:.2s}
+.hint-btn:hover{background:#F0E6D0}
+
+/* OPTIONS */
+.opts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.ob{padding:12px 22px;border-radius:14px;border:3px solid #E0D8C8;background:white;
+  cursor:pointer;font-family:'Baloo 2';font-size:20px;font-weight:800;color:var(--dark);
+  box-shadow:0 3px 0 #D4C4A8;transition:.15s;user-select:none;min-width:70px;text-align:center}
+.ob:hover{transform:translateY(-2px);border-color:#C0B8A8}
+.ob:active{transform:translateY(2px);box-shadow:0 1px 0 #D4C4A8}
+.ob.ok{border-color:var(--green);background:#E8F5E9;color:var(--green);box-shadow:0 3px 0 #81C784}
+.ob.no{border-color:var(--red);background:#FFEBEE;color:var(--red);animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* INPUT */
+.irow{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0}
+.ainp{width:100px;height:50px;border-radius:12px;border:3px solid #D4C4A8;background:#FFF8E7;
+  text-align:center;font-family:'Baloo 2';font-size:26px;font-weight:800;color:var(--dark);outline:none;transition:.2s}
+.ainp:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(77,150,255,.12)}
+.ainp.ok{border-color:var(--green);background:#E8F5E9;color:var(--green)}
+.ainp.no{border-color:var(--red);background:#FFEBEE;color:var(--red);animation:shk .4s}
+
+.cbtn{padding:12px 30px;border-radius:14px;border:none;cursor:pointer;font-family:'Baloo 2';
+  font-size:16px;font-weight:800;color:white;background:linear-gradient(135deg,var(--blue),#3A7BD5);
+  box-shadow:0 4px 0 #2A5DB0,0 6px 18px rgba(77,150,255,.2);transition:.15s;user-select:none}
+.cbtn:hover{transform:translateY(-2px)}.cbtn:active{transform:translateY(2px);box-shadow:0 1px 0 #2A5DB0}
+
+.nbtn{display:block;margin:12px auto 0;padding:10px 28px;border-radius:12px;border:2px solid #D4C4A8;
+  background:white;cursor:pointer;font-family:'Baloo 2';font-size:14px;font-weight:700;color:#7B8FA3;transition:.2s}
+.nbtn:hover{background:#F5F0E8;color:var(--dark)}
+
+/* FEEDBACK */
+.fb{text-align:center;font-family:'Baloo 2';font-size:24px;font-weight:800;min-height:36px;animation:pop .3s}
+@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.fb.ok{color:var(--green)}.fb.no{color:var(--red)}
+.ebox{border-radius:12px;padding:10px 16px;font-size:13px;font-weight:600;text-align:center;margin-top:8px;line-height:1.5}
+.ebox.ok{background:#E8F5E9;border:2px solid #C8E6C9;color:#2E7D32}
+.ebox.no{background:#FFEBEE;border:2px solid #FFCDD2;color:#C62828}
+
+/* FRACTION */
+.fr{display:inline-flex;flex-direction:column;align-items:center;font-family:'Baloo 2';font-weight:800;margin:0 4px;vertical-align:middle}
+.fr-n{font-size:22px;line-height:1}.fr-l{width:100%;height:3px;border-radius:2px;background:currentColor;margin:1px 0}
+.fr-d{font-size:22px;line-height:1}
+
+/* BAR VIS */
+.bvis{display:flex;height:40px;border-radius:10px;overflow:hidden;border:2.5px solid;margin:10px auto;max-width:420px}
+.bp{flex:1;border-right:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:800;color:white}
+.bp:last-child{border-right:none}
+
+/* CONFETTI */
+.conf{position:fixed;top:-10px;z-index:999;pointer-events:none;animation:cfall 3s forwards}
+@keyframes cfall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+/* 3D BOX */
+.box3d{margin:10px auto;width:fit-content}
+
+@media(max-width:640px){
+  .hdr h1{font-size:24px}.mcard{padding:16px}.sm{font-size:17px}.st-q{font-size:17px}
+  .dtab{padding:6px 10px;font-size:11px}.dtab .di{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<div class="app">
+
+<div class="hdr">
+  <h1>🏆 Grade 5 <span>Math Test Prep</span> <span class="badge">CA SBAC</span></h1>
+  <div class="sub">California Common Core Assessment — Real problems, real learning!</div>
+</div>
+
+<div class="sbar">
+  <div class="spill"><span class="ic">⭐</span><div><div class="lb">Score</div><div class="vl" id="scV">0</div></div></div>
+  <div class="spill"><span class="ic">🔥</span><div><div class="lb">Streak</div><div class="vl" id="stV">0</div></div></div>
+  <div class="spill"><span class="ic">✅</span><div><div class="lb">Correct</div><div class="vl" id="crV">0/0</div></div></div>
+</div>
+
+<div class="dtabs" id="dtabs"></div>
+<div class="mcard" id="mc">
+  <div style="text-align:center;padding:40px;color:#8899A6;font-size:16px;font-weight:700">
+    👆 Pick a topic above to begin!
+  </div>
+</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// GRADE 5 SBAC MATH TEST PREP
+// ═══════════════════════════════════════════
+
+// BG
+const bg=document.getElementById('bg');
+const bcolors=['#FF6B9D','#4D96FF','#FFD93D','#6BCB77','#A66CFF','#FF8C42','#54BAB9'];
+for(let i=0;i<12;i++){const d=document.createElement('div');d.className='bg-shape';
+const sz=80+Math.random()*200;d.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${bcolors[i%7]};animation-delay:${Math.random()*12}s;animation-duration:${20+Math.random()*15}s`;bg.appendChild(d)}
+
+// STATE
+let sc=0,stk=0,totA=0,totC=0,curDom=null,qIdx=0,ans=false,res=[],TQ=8;
+
+// HELPERS
+function gcd(a,b){return b===0?a:gcd(b,a%b)}
+function simp(n,d){const g=gcd(Math.abs(n),Math.abs(d));return[n/g,d/g]}
+function ri(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+function sh(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=ri(0,i);[b[i],b[j]]=[b[j],b[i]]}return b}
+function fr(n,d){return `<span class="fr"><span class="fr-n">${n}</span><span class="fr-l"></span><span class="fr-d">${d}</span></span>`}
+
+// SVG DRAWERS
+const S={
+  pizza:(w=100,h=100)=>`<svg width="${w}" height="${h}" viewBox="0 0 100 100"><ellipse cx="50" cy="52" rx="46" ry="43" fill="#F5E6CC" stroke="#D4A574" stroke-width="2"/><circle cx="50" cy="48" r="38" fill="#E8B84B"/><circle cx="50" cy="48" r="33" fill="#D32F2F"/><circle cx="38" cy="40" r="6" fill="#FFE082" opacity=".7"/><circle cx="60" cy="42" r="7" fill="#FFE082" opacity=".6"/><circle cx="48" cy="56" r="5.5" fill="#FFE082" opacity=".7"/><circle cx="40" cy="38" r="4" fill="#B71C1C"/><circle cx="58" cy="40" r="4" fill="#B71C1C"/><circle cx="48" cy="54" r="4" fill="#B71C1C"/><circle cx="36" cy="52" r="3" fill="#B71C1C"/></svg>`,
+  money:(w=80,h=55)=>`<svg width="${w}" height="${h}" viewBox="0 0 80 55"><rect x="4" y="5" rx="6" width="72" height="44" fill="#2E7D32" stroke="#1B5E20" stroke-width="2"/><circle cx="40" cy="27" r="13" fill="none" stroke="#66BB6A" stroke-width="1.2"/><text x="40" y="33" text-anchor="middle" font-family="Baloo 2" font-size="16" font-weight="800" fill="#C8E6C9">$</text></svg>`,
+  box:(l=4,w=3,h=2,sz=100)=>{
+    const s=sz,ox=s*.35,oy=s*.15,u=s*.13;
+    const fl=l*u,fw=w*u*.6,fh=h*u;
+    const bx=ox,by=oy+fh;
+    const fx=bx+fl,fy=by;
+    const tx=bx+fw*.8,ty=by-fw*.6;
+    return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}">
+      <polygon points="${bx},${by} ${fx},${fy} ${fx+fw*.8},${fy-fw*.6} ${bx+fw*.8},${by-fw*.6}" fill="#90CAF9" stroke="#42A5F5" stroke-width="1.5"/>
+      <polygon points="${bx},${by} ${fx},${fy} ${fx},${fy-fh} ${bx},${by-fh}" fill="#64B5F6" stroke="#42A5F5" stroke-width="1.5"/>
+      <polygon points="${fx},${fy} ${fx+fw*.8},${fy-fw*.6} ${fx+fw*.8},${fy-fw*.6-fh} ${fx},${fy-fh}" fill="#42A5F5" stroke="#1E88E5" stroke-width="1.5"/>
+      <text x="${bx+fl*.5}" y="${by+16}" text-anchor="middle" font-size="10" font-weight="700" fill="#1565C0" font-family="Nunito">${l}×${w}×${h}</text>
+    </svg>`},
+  ruler:(w=220,h=40)=>`<svg width="${w}" height="${h}" viewBox="0 0 220 40"><rect x="2" y="6" width="216" height="28" rx="4" fill="#FFE082" stroke="#F9A825" stroke-width="1.5"/>${[...Array(12)].map((_,i)=>`<line x1="${10+i*18}" y1="6" x2="${10+i*18}" y2="${i%5===0?28:20}" stroke="#5D4037" stroke-width="${i%5===0?1.2:.7}"/>`).join('')}</svg>`,
+  coin:(w=44,h=44)=>`<svg width="${w}" height="${h}" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" fill="#FFD93D" stroke="#F9A825" stroke-width="2"/><circle cx="22" cy="22" r="15" fill="none" stroke="#F9A825" stroke-width=".8" opacity=".5"/><text x="22" y="28" text-anchor="middle" font-family="Baloo 2" font-size="14" font-weight="800" fill="#E65100">¢</text></svg>`,
+  apple:(w=50,h=55)=>`<svg width="${w}" height="${h}" viewBox="0 0 50 55"><path d="M25,7 Q27,1 29,4" fill="none" stroke="#5D4037" stroke-width="2" stroke-linecap="round"/><ellipse cx="30" cy="7" rx="6" ry="3" fill="#66BB6A" transform="rotate(-20,30,7)"/><ellipse cx="25" cy="32" rx="20" ry="20" fill="#F44336"/><ellipse cx="19" cy="26" rx="5" ry="7" fill="#EF5350" opacity=".5" transform="rotate(-15,19,26)"/></svg>`,
+  water:(w=35,h=75)=>`<svg width="${w}" height="${h}" viewBox="0 0 35 75"><rect x="12" y="2" width="11" height="9" rx="2" fill="#42A5F5" stroke="#1E88E5" stroke-width="1"/><rect x="13" y="11" width="9" height="8" fill="#E3F2FD" stroke="#90CAF9" stroke-width=".8"/><rect x="6" y="19" width="23" height="48" rx="5" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1.5"/><rect x="8" y="32" width="19" height="33" rx="4" fill="#42A5F5" opacity=".4"/></svg>`,
+  coord:(pts,w=200,h=200)=>{
+    const p=25,gw=w-2*p,gh=h-2*p,cx=p+gw/2,cy=p+gh/2,u=gw/10;
+    let s=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+    // grid
+    for(let i=-5;i<=5;i++){const x=cx+i*u;s+=`<line x1="${x}" y1="${p}" x2="${x}" y2="${h-p}" stroke="${i===0?'#334155':'#e2e8f0'}" stroke-width="${i===0?2:.5}"/>`;
+      const y=cy+i*u;s+=`<line x1="${p}" y1="${y}" x2="${w-p}" y2="${y}" stroke="${i===0?'#334155':'#e2e8f0'}" stroke-width="${i===0?2:.5}"/>`;
+      if(i!==0&&i%2===0){s+=`<text x="${cx+i*u}" y="${cy+14}" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="Nunito">${i}</text>`;
+        s+=`<text x="${cx-10}" y="${cy-i*u+3}" text-anchor="end" font-size="8" fill="#94a3b8" font-family="Nunito">${i}</text>`}}
+    s+=`<text x="${w-p+8}" y="${cy-4}" font-size="10" font-weight="700" fill="#334155" font-family="Nunito">x</text>`;
+    s+=`<text x="${cx+6}" y="${p-6}" font-size="10" font-weight="700" fill="#334155" font-family="Nunito">y</text>`;
+    // points
+    const colors=['#FF6B6B','#4D96FF','#6BCB77','#FFD93D','#A66CFF'];
+    pts.forEach((pt,i)=>{const px=cx+pt[0]*u,py=cy-pt[1]*u;
+      s+=`<circle cx="${px}" cy="${py}" r="5" fill="${colors[i%5]}" stroke="white" stroke-width="1.5"/>`;
+      s+=`<text x="${px+8}" y="${py-6}" font-size="9" font-weight="700" fill="${colors[i%5]}" font-family="Baloo 2">(${pt[0]},${pt[1]})</text>`});
+    s+=`</svg>`;return s}
+};
+
+// PIE SVG
+function pie(num,den,color,sz=110){
+  const r=sz/2-5;let s=`<svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}">`;
+  const cx=sz/2,cy=sz/2;if(den<=0)return s+'</svg>';
+  for(let i=0;i<den;i++){const sa=(i/den)*Math.PI*2-Math.PI/2,ea=((i+1)/den)*Math.PI*2-Math.PI/2;
+    const x1=cx+r*Math.cos(sa),y1=cy+r*Math.sin(sa),x2=cx+r*Math.cos(ea),y2=cy+r*Math.sin(ea);
+    const lg=(ea-sa)>Math.PI?1:0,fl=i<num;
+    s+=`<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${lg} 1 ${x2},${y2} Z" fill="${fl?color:'rgba(0,0,0,.06)'}" stroke="rgba(0,0,0,.12)" stroke-width="1.5"/>`}
+  return s+'</svg>'}
+
+function barVis(num,den,color){
+  let h=`<div class="bvis" style="border-color:${color}44">`;
+  for(let i=0;i<den;i++)h+=`<div class="bp" style="background:${i<num?color:'rgba(0,0,0,.06)'};color:${i<num?'white':'#ccc'}">${i<num?'●':'○'}</div>`;
+  return h+'</div>'}
+
+// CONFETTI
+function confetti(){const c=bcolors;for(let i=0;i<25;i++){const d=document.createElement('div');d.className='conf';
+  d.style.cssText=`left:${Math.random()*100}%;background:${c[ri(0,6)]};animation-delay:${Math.random()*.5}s;animation-duration:${2+Math.random()*2}s;width:${6+Math.random()*7}px;height:${6+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'}`;
+  document.body.appendChild(d);setTimeout(()=>d.remove(),4000)}}
+
+function updateUI(){document.getElementById('scV').textContent=sc;document.getElementById('stV').textContent=stk;
+  document.getElementById('crV').textContent=`${totC}/${totA}`}
+
+// ═══════════════════════════════════════════
+// DOMAIN DEFINITIONS (CA CCSS Grade 5)
+// ═══════════════════════════════════════════
+const DOMAINS=[
+  {id:'nbt',name:'Base Ten',icon:'🔢',accent:'#4D96FF',
+   desc:'5.NBT — Place value, decimals, operations',
+   gen:genNBT},
+  {id:'nf',name:'Fractions',icon:'🍕',accent:'#FF6B9D',
+   desc:'5.NF — Add, subtract, multiply, divide fractions',
+   gen:genNF},
+  {id:'oa',name:'Expressions',icon:'🧮',accent:'#A66CFF',
+   desc:'5.OA — Order of operations, patterns',
+   gen:genOA},
+  {id:'md',name:'Measurement',icon:'📏',accent:'#FF8C42',
+   desc:'5.MD — Conversions, volume',
+   gen:genMD},
+  {id:'g',name:'Geometry',icon:'📐',accent:'#2EC4B6',
+   desc:'5.G — Coordinate plane, classify shapes',
+   gen:genG},
+];
+
+// INIT TABS
+function initTabs(){
+  document.getElementById('dtabs').innerHTML=DOMAINS.map(d=>`
+    <div class="dtab ${curDom===d.id?'act':''}" onclick="startDom('${d.id}')"
+      style="--accent:${d.accent}"><span class="di">${d.icon}</span>${d.name}</div>`).join('')}
+
+function startDom(id){curDom=id;qIdx=0;res=Array(TQ).fill(null);ans=false;initTabs();loadQ()}
+function getDom(){return DOMAINS.find(d=>d.id===curDom)}
+
+// LOAD Q
+function loadQ(){ans=false;const dom=getDom();const prob=dom.gen();renderQ(prob,dom)}
+
+function renderQ(p,dom){
+  const mc=document.getElementById('mc');
+  const opts=sh(p.options);
+  mc.innerHTML=`
+    <div class="prow">${res.map((r,i)=>`<div class="pd ${r===true?'ok':r===false?'no':i===qIdx?'cur':''}"></div>`).join('')}</div>
+    <div class="std-tag">${p.standard}</div>
+    <div class="story">
+      <div class="st-row"><span class="st-ico">${p.emoji}</span><div class="st-txt">${p.story}</div></div>
+      <div class="st-q">${p.question}</div>
+    </div>
+    ${p.visual?`<div class="illust">${p.visual}</div>`:''}
+    <div class="solver" id="solver">
+      <div class="solver-t">🧩 Step-by-Step <button class="hint-btn" id="hBtn" onclick="showSteps()">🔓 Show Steps</button></div>
+      <div id="stArea">${p.steps.map((s,i)=>`
+        <div class="step locked" id="s${i}">
+          <div class="sn">${i+1}</div>
+          <div class="sc"><div class="sl">${s.label}</div><div class="sm">${s.math}</div>${s.explain?`<div class="se">💡 ${s.explain}</div>`:''}</div>
+        </div>`).join('')}</div>
+    </div>
+    <div style="text-align:center;font-family:'Baloo 2';font-size:16px;font-weight:700;color:#4A3728;margin-bottom:6px">Choose your answer:</div>
+    <div class="opts" id="oGrid">${opts.map(o=>`<div class="ob" onclick="chk(this,'${o}','${p.answer}')">${o}</div>`).join('')}</div>
+    <div class="fb" id="fb"></div><div id="exA"></div><div id="nxA"></div>`;
+}
+
+function showSteps(){document.querySelectorAll('.step').forEach((s,i)=>{
+  setTimeout(()=>{s.classList.remove('locked');s.classList.add('done')},i*350)});
+  const b=document.getElementById('hBtn');if(b)b.style.display='none'}
+
+function chk(el,picked,correct){
+  if(ans)return;ans=true;
+  const isOk=picked.toString()===correct.toString();
+  el.classList.add(isOk?'ok':'no');
+  res[qIdx]=isOk;
+  if(!isOk)document.querySelectorAll('.ob').forEach(b=>{if(b.textContent===correct)b.classList.add('ok')});
+  if(isOk){sc+=10+stk*3;stk++;totC++;confetti()}else stk=0;
+  totA++;updateUI();showSteps();
+  const fb=document.getElementById('fb'),ex=document.getElementById('exA'),nx=document.getElementById('nxA');
+  fb.innerHTML=isOk?['🎉 Brilliant!','⭐ Perfect!','🌟 Amazing!','🔥 On Fire!'][ri(0,3)]:['😅 Not quite!','🤔 Close!','💪 Keep going!'][ri(0,2)];
+  fb.className='fb '+(isOk?'ok':'no');
+  ex.innerHTML=`<div class="ebox ${isOk?'ok':'no'}">${isOk?'✅':'❌'} The answer is <b>${correct}</b>. Check the steps above!</div>`;
+  const pr=document.querySelector('.prow');
+  if(pr)pr.innerHTML=res.map((r,i)=>`<div class="pd ${r===true?'ok':r===false?'no':i===qIdx+1?'cur':''}"></div>`).join('');
+  if(qIdx<TQ-1)nx.innerHTML=`<button class="nbtn" onclick="qIdx++;loadQ()">Next Question →</button>`;
+  else{const c=res.filter(r=>r).length;const em=c>=7?'🏆':c>=5?'⭐':'💪';
+    nx.innerHTML=`<div style="text-align:center;margin-top:14px"><div style="font-size:44px">${em}</div>
+    <div style="font-family:'Baloo 2';font-size:22px;font-weight:800;color:#1B2838">${c>=7?'Outstanding!':c>=5?'Good Work!':'Keep Practicing!'}</div>
+    <div style="color:#8899A6;font-size:13px;margin:4px 0">${c}/${TQ} correct</div>
+    <button class="cbtn" onclick="startDom('${curDom}')" style="margin-top:10px">🔄 Try Again</button></div>`;
+    if(c>=7)confetti()}}
+
+// ═══════════════════════════════════════════
+// GENERATORS — 5.NBT (Base Ten & Decimals)
+// ═══════════════════════════════════════════
+function genNBT(){
+  const types=[genNBT_placeVal,genNBT_decMult,genNBT_decDiv,genNBT_decAdd,genNBT_decCompare,genNBT_powers10];
+  return types[ri(0,types.length-1)]();
+}
+function genNBT_placeVal(){
+  const digits=[ri(1,9),ri(0,9),ri(0,9),ri(0,9),ri(0,9)];
+  const num=digits.join('');const pos=ri(0,4);
+  const placeNames=['ten-thousands','thousands','hundreds','tens','ones'];
+  const placeVals=[10000,1000,100,10,1];
+  const val=digits[pos]*placeVals[pos];
+  let opts=[val.toString()];
+  while(opts.length<4){const w=(digits[pos]*placeVals[ri(0,4)]).toString();if(!opts.includes(w)&&parseInt(w)>0)opts.push(w)}
+  return{standard:'5.NBT.1',emoji:'🔢',story:`In the number <b>${Number(num).toLocaleString()}</b>, what is the <b>value</b> of the digit <b>${digits[pos]}</b> in the ${placeNames[pos]} place?`,
+    question:`Value of ${digits[pos]} in ${placeNames[pos]} place = ?`,
+    visual:`<div style="font-family:'Baloo 2';font-size:36px;font-weight:800;color:#1B2838;letter-spacing:4px;background:#FFF8E7;padding:12px 24px;border-radius:14px;border:2px solid #F0E6C8">${num.split('').map((d,i)=>`<span style="${i===pos?'color:#FF6B6B;text-decoration:underline':''}">${d}</span>`).join('')}</div>`,
+    answer:val.toString(),options:opts,
+    steps:[{label:'Identify the digit',math:`The digit is <span class="hl">${digits[pos]}</span>`},
+      {label:'Find its place',math:`It's in the <span class="hl">${placeNames[pos]}</span> place`},
+      {label:'Calculate the value',math:`${digits[pos]} × ${placeVals[pos].toLocaleString()} = <span class="hl">${val.toLocaleString()}</span>`,explain:`Each place is 10× the place to its right`},
+      {label:'Answer',math:`<b>${val.toLocaleString()}</b>`}]}}
+
+function genNBT_decMult(){
+  const a=[1.2,2.5,3.4,0.6,4.5,1.8,2.3,0.9][ri(0,7)];
+  const b=[0.3,0.4,0.5,0.2,0.6,0.7,0.8][ri(0,6)];
+  const ans=+(a*b).toFixed(2);
+  let opts=[ans.toString()];
+  const aw=(n)=>{const s=n.toString();if(!opts.includes(s)&&n>0)opts.push(s)};
+  aw(+(a*b*10).toFixed(2));aw(+(ans+0.1).toFixed(2));aw(+(ans-0.1>0?ans-0.1:ans+0.2).toFixed(2));
+  return{standard:'5.NBT.7',emoji:'✖️',
+    story:`A ribbon costs <b>$${a}</b> per meter. You buy <b>${b}</b> meters. How much do you pay?`,
+    question:`${a} × ${b} = ?`,
+    visual:S.ruler(240,40),answer:ans.toString(),options:opts,
+    steps:[{label:'Remove decimals',math:`${a} → ${Math.round(a*10)} and ${b} → ${Math.round(b*10)}`,explain:'Multiply both by 10'},
+      {label:'Multiply whole numbers',math:`${Math.round(a*10)} × ${Math.round(b*10)} = ${Math.round(a*10)*Math.round(b*10)}`},
+      {label:'Count decimal places',math:`${a} has 1 decimal + ${b} has 1 decimal = <span class="hl">2 decimal places</span>`},
+      {label:'Place the decimal',math:`${Math.round(a*10)*Math.round(b*10)} → <span class="hl">${ans}</span>`}]}}
+
+function genNBT_decDiv(){
+  const pairs=[[4.8,0.6,8],[3.5,0.7,5],[2.4,0.8,3],[6.3,0.9,7],[1.5,0.3,5],[7.2,0.8,9],[5.6,0.7,8],[4.5,0.5,9]];
+  const[a,b,c]=pairs[ri(0,pairs.length-1)];
+  let opts=[c.toString()];const aw=n=>{const s=n.toString();if(!opts.includes(s)&&n>0)opts.push(s)};
+  aw(c+1);aw(c-1>0?c-1:c+2);aw(c*2);
+  return{standard:'5.NBT.7',emoji:'➗',
+    story:`You have <b>${a} kg</b> of trail mix. Each bag holds <b>${b} kg</b>. How many bags can you fill?`,
+    question:`${a} ÷ ${b} = ?`,
+    visual:`<div class="ill-grp">${barVis(c,c+2,'#4D96FF')}<div class="ill-lbl">${a} kg ÷ ${b} kg per bag</div></div>`,
+    answer:c.toString(),options:opts,
+    steps:[{label:'Move decimal 1 right in BOTH',math:`${a} → ${Math.round(a*10)} and ${b} → ${Math.round(b*10)}`},
+      {label:'Divide whole numbers',math:`${Math.round(a*10)} ÷ ${Math.round(b*10)} = <span class="hl">${c}</span>`},
+      {label:'Answer',math:`${a} ÷ ${b} = <b>${c} bags</b>`}]}}
+
+function genNBT_decAdd(){
+  const a=+(ri(1,9)+ri(1,99)/100).toFixed(2);const b=+(ri(1,9)+ri(1,99)/100).toFixed(2);
+  const ans=+(a+b).toFixed(2);
+  let opts=[ans.toString()];const aw=n=>{const s=n.toFixed(2);if(!opts.includes(s)&&n>0)opts.push(s)};
+  aw(ans+1);aw(ans-1);aw(+(a+b+0.1).toFixed(2));
+  return{standard:'5.NBT.7',emoji:'➕',
+    story:`You bought a book for <b>$${a.toFixed(2)}</b> and a pen for <b>$${b.toFixed(2)}</b>. What's the total?`,
+    question:`$${a.toFixed(2)} + $${b.toFixed(2)} = ?`,
+    visual:`<div style="display:flex;gap:12px;justify-content:center">${S.money(70,48)}${S.money(70,48)}</div>`,
+    answer:ans.toFixed(2),options:opts.map(o=>parseFloat(o).toFixed(2)),
+    steps:[{label:'Line up decimals',math:`&nbsp; ${a.toFixed(2)}<br>+ ${b.toFixed(2)}`,explain:'Stack the numbers with decimal points aligned'},
+      {label:'Add from right to left',math:`= <span class="hl">${ans.toFixed(2)}</span>`},
+      {label:'Answer',math:`<b>$${ans.toFixed(2)}</b>`}]}}
+
+function genNBT_decCompare(){
+  const nums=[+(ri(1,9)+'.'+ri(10,99)),+(ri(1,9)+'.'+ri(10,99))];
+  while(nums[0]===nums[1])nums[1]=+(ri(1,9)+'.'+ri(10,99));
+  const bigger=nums[0]>nums[1]?nums[0]:nums[1];
+  let opts=[bigger.toString()];const aw=n=>{const s=n.toString();if(!opts.includes(s))opts.push(s)};
+  aw(nums[0].toString());aw(nums[1].toString());aw((bigger+0.01).toFixed(2));
+  return{standard:'5.NBT.3',emoji:'⚖️',
+    story:`Compare: Which decimal is <b>greater</b>: <b>${nums[0]}</b> or <b>${nums[1]}</b>?`,
+    question:`Which is greater: ${nums[0]} or ${nums[1]}?`,visual:null,
+    answer:bigger.toString(),options:[...new Set(opts)].slice(0,4),
+    steps:[{label:'Compare whole number parts',math:`${Math.floor(nums[0])} vs ${Math.floor(nums[1])}`},
+      {label:'If equal, compare tenths, then hundredths',math:`${nums[0]} vs ${nums[1]}`},
+      {label:'Answer',math:`<span class="hl">${bigger}</span> is greater`}]}}
+
+function genNBT_powers10(){
+  const base=ri(1,99);const exp=ri(1,3);const ans=base*Math.pow(10,exp);
+  let opts=[ans.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(base*Math.pow(10,exp+1));aw(base*Math.pow(10,exp-1>0?exp-1:1));aw(ans+base);
+  return{standard:'5.NBT.2',emoji:'💥',
+    story:`What is <b>${base} × 10<sup>${exp}</sup></b>?`,
+    question:`${base} × 10${exp>1?'<sup>'+exp+'</sup>':''} = ?`,visual:null,
+    answer:ans.toString(),options:opts,
+    steps:[{label:'10 to the power',math:`10<sup>${exp}</sup> = ${Math.pow(10,exp).toLocaleString()}`,explain:`10 multiplied by itself ${exp} time${exp>1?'s':''}`},
+      {label:'Multiply',math:`${base} × ${Math.pow(10,exp).toLocaleString()} = <span class="hl">${ans.toLocaleString()}</span>`,explain:`Just add ${exp} zero${exp>1?'s':''} to ${base}`},
+      {label:'Answer',math:`<b>${ans.toLocaleString()}</b>`}]}}
+
+// ═══════════════════════════════════════════
+// 5.NF (Fractions)
+// ═══════════════════════════════════════════
+function genNF(){return[genNF_addUnlike,genNF_subUnlike,genNF_multFrac,genNF_divFrac,genNF_fracWord,genNF_multWord][ri(0,5)]()}
+
+function genNF_addUnlike(){
+  const d1=[2,3,4,5,6][ri(0,4)],d2=[2,3,4,5,6][ri(0,4)];
+  const n1=ri(1,d1-1),n2=ri(1,d2-1);
+  const lcd=d1*d2/gcd(d1,d2);const rn=n1*(lcd/d1)+n2*(lcd/d2);const[sn,sd]=simp(rn,lcd);
+  const ansStr=sn>=sd?`${Math.floor(sn/sd)} ${simp(sn%sd,sd).join('/')}`:`${sn}/${sd}`;
+  const displayAns=sn>=sd&&sn%sd!==0?`${Math.floor(sn/sd)} ${simp(sn%sd,sd).join('/')}`:sn%sd===0?`${sn/sd}`:`${sn}/${sd}`;
+  let opts=[displayAns];while(opts.length<4){const w=`${ri(1,12)}/${sd}`;if(!opts.includes(w))opts.push(w)}
+  return{standard:'5.NF.1',emoji:'🍕',
+    story:`You ate <b>${fr(n1,d1)}</b> of a pizza, then <b>${fr(n2,d2)}</b> more. How much did you eat in total?`,
+    question:`${fr(n1,d1)} + ${fr(n2,d2)} = ?`,
+    visual:`<div style="display:flex;gap:16px;align-items:center;justify-content:center">${pie(n1,d1,'#FF6B9D',90)}<span style="font-size:28px;color:#aaa">+</span>${pie(n2,d2,'#4D96FF',90)}</div>`,
+    answer:displayAns,options:opts,
+    steps:[{label:'Find LCD',math:`LCD of ${d1} and ${d2} = <span class="hl">${lcd}</span>`},
+      {label:'Convert fractions',math:`${fr(n1,d1)} = ${fr(n1*(lcd/d1),lcd)} &nbsp;and&nbsp; ${fr(n2,d2)} = ${fr(n2*(lcd/d2),lcd)}`},
+      {label:'Add numerators',math:`${fr(n1*(lcd/d1),lcd)} + ${fr(n2*(lcd/d2),lcd)} = ${fr(rn,lcd)}`},
+      {label:'Simplify',math:`= <span class="hl">${displayAns}</span>`}]}}
+
+function genNF_subUnlike(){
+  const d1=[3,4,5,6,8][ri(0,4)],d2=d1;
+  const n1=ri(Math.ceil(d1/2),d1-1),n2=ri(1,n1-1);
+  const[sn,sd]=simp(n1-n2,d1);const displayAns=`${sn}/${sd}`;
+  let opts=[displayAns];while(opts.length<4){const w=`${ri(1,d1)}/${sd}`;if(!opts.includes(w)&&ri(1,d1)>0)opts.push(w)}
+  return{standard:'5.NF.1',emoji:'🎂',
+    story:`A cake is ${fr(n1,d1)} full. You eat ${fr(n2,d2)}. How much is left?`,
+    question:`${fr(n1,d1)} − ${fr(n2,d1)} = ?`,
+    visual:`<div style="display:flex;gap:16px;align-items:center;justify-content:center">${pie(n1,d1,'#FF8C42',90)}<span style="font-size:28px;color:#aaa">−</span>${pie(n2,d1,'#FF6B6B',90)}</div>`,
+    answer:displayAns,options:opts,
+    steps:[{label:'Same denominator',math:`Both have denominator ${d1} ✓`},
+      {label:'Subtract numerators',math:`${n1} − ${n2} = ${n1-n2}`},
+      {label:'Simplify',math:`${fr(n1-n2,d1)} = <span class="hl">${displayAns}</span>`}]}}
+
+function genNF_multFrac(){
+  const n1=ri(1,5),d1=ri(2,6),n2=ri(1,4),d2=ri(2,6);
+  const rn=n1*n2,rd=d1*d2;const[sn,sd]=simp(rn,rd);
+  const displayAns=sn>=sd&&sn%sd===0?`${sn/sd}`:sn>=sd?`${Math.floor(sn/sd)} ${simp(sn%sd,sd).join('/')}`:`${sn}/${sd}`;
+  let opts=[displayAns];while(opts.length<4){const w=`${ri(1,12)}/${ri(2,12)}`;if(!opts.includes(w))opts.push(w)}
+  return{standard:'5.NF.4',emoji:'✖️',
+    story:`A garden is <b>${fr(n1,d1)}</b> of a yard long and <b>${fr(n2,d2)}</b> of a yard wide. What's the area?`,
+    question:`${fr(n1,d1)} × ${fr(n2,d2)} = ?`,visual:null,
+    answer:displayAns,options:opts,
+    steps:[{label:'Multiply numerators',math:`${n1} × ${n2} = ${rn}`},
+      {label:'Multiply denominators',math:`${d1} × ${d2} = ${rd}`},
+      {label:'Simplify',math:`${fr(rn,rd)} = <span class="hl">${displayAns}</span>`}]}}
+
+function genNF_divFrac(){
+  const wh=ri(2,8),d=ri(2,6);const ans=wh*d;
+  let opts=[ans.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(wh);aw(ans+d);aw(ans-1);
+  return{standard:'5.NF.7',emoji:'🍫',
+    story:`You have <b>${wh}</b> chocolate bars. You give each friend <b>${fr(1,d)}</b> of a bar. How many friends can you share with?`,
+    question:`${wh} ÷ ${fr(1,d)} = ?`,
+    visual:`<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center">${Array(Math.min(wh,6)).fill(0).map(()=>`<div style="width:60px;height:28px;border-radius:6px;background:#8D6E63;border:2px solid #5D4037;display:flex;align-items:center;justify-content:center;font-size:10px;color:#FFE0B2;font-weight:800">CHOC</div>`).join('')}</div>`,
+    answer:ans.toString(),options:opts,
+    steps:[{label:'Dividing by a fraction = multiply by its reciprocal',math:`${wh} ÷ ${fr(1,d)} = ${wh} × ${fr(d,1)}`},
+      {label:'Multiply',math:`${wh} × ${d} = <span class="hl">${ans}</span>`},
+      {label:'Answer',math:`<b>${ans} friends!</b>`}]}}
+
+function genNF_fracWord(){
+  const total=ri(20,60);const n=ri(1,4);const d=ri(n+1,6);
+  const ans=Math.floor(total*n/d);
+  let opts=[ans.toString()];const aw=v=>{if(!opts.includes(v.toString())&&v>0)opts.push(v.toString())};
+  aw(ans+ri(1,5));aw(ans-ri(1,3)>0?ans-ri(1,3):ans+3);aw(total-ans);
+  return{standard:'5.NF.6',emoji:'🏫',
+    story:`There are <b>${total}</b> students. <b>${fr(n,d)}</b> of them ride the bus. How many students ride the bus?`,
+    question:`${fr(n,d)} of ${total} = ?`,visual:null,
+    answer:ans.toString(),options:opts,
+    steps:[{label:'Multiply',math:`${total} × ${fr(n,d)} = ${fr(total*n,d)}`},
+      {label:'Divide',math:`${total*n} ÷ ${d} = <span class="hl">${ans}</span>`},
+      {label:'Answer',math:`<b>${ans} students</b>`}]}}
+
+function genNF_multWord(){
+  const w=ri(2,6);const n=ri(1,3);const d=ri(n+1,5);
+  const rn=w*n;const[sn,sd]=simp(rn,d);
+  const displayAns=sn>=sd&&sn%sd===0?`${sn/sd}`:sn>=sd?`${Math.floor(sn/sd)} ${simp(sn%sd,sd).join('/')}`:`${sn}/${sd}`;
+  let opts=[displayAns];while(opts.length<4){const ww=`${ri(1,10)}/${sd}`;if(!opts.includes(ww))opts.push(ww)}
+  return{standard:'5.NF.4',emoji:'🍪',
+    story:`Each batch of cookies needs <b>${fr(n,d)}</b> cup of sugar. You make <b>${w}</b> batches. How many cups?`,
+    question:`${w} × ${fr(n,d)} = ?`,visual:null,
+    answer:displayAns,options:opts,
+    steps:[{label:'Multiply whole × numerator',math:`${w} × ${n} = ${w*n}`},
+      {label:'Keep denominator',math:`${fr(w*n,d)}`},
+      {label:'Simplify',math:`= <span class="hl">${displayAns}</span>`}]}}
+
+// ═══════════════════════════════════════════
+// 5.OA (Expressions & Patterns)
+// ═══════════════════════════════════════════
+function genOA(){return[genOA_order,genOA_expr,genOA_pattern][ri(0,2)]()}
+
+function genOA_order(){
+  const templates=[
+    {expr:'(A + B) × C',fn:(a,b,c)=>(a+b)*c},
+    {expr:'A × (B - C)',fn:(a,b,c)=>a*(b-c)},
+    {expr:'A + B × C',fn:(a,b,c)=>a+b*c},
+    {expr:'(A × B) + C',fn:(a,b,c)=>a*b+c},
+    {expr:'A × B - C',fn:(a,b,c)=>a*b-c},
+  ];
+  const t=templates[ri(0,templates.length-1)];
+  let a,b,c,ans;
+  do{a=ri(2,9);b=ri(2,9);c=ri(1,6);ans=t.fn(a,b,c)}while(ans<1||ans>200);
+  const display=t.expr.replace('A',a).replace('B',b).replace('C',c);
+  let opts=[ans.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(a+b*c!==ans?a+b*c:ans+5);aw((a+b)*c!==ans?(a+b)*c:ans+3);aw(a*b+c!==ans?a*b+c:ans-2>0?ans-2:ans+7);
+  return{standard:'5.OA.1',emoji:'🧮',
+    story:`Evaluate using <b>order of operations</b> (PEMDAS):`,
+    question:display+' = ?',visual:null,
+    answer:ans.toString(),options:opts,
+    steps:[{label:'Parentheses first',math:`Solve anything inside ( ) first`,explain:'P = Parentheses'},
+      {label:'Then multiply/divide',math:`Left to right`,explain:'M/D before A/S'},
+      {label:'Then add/subtract',math:`${display} = <span class="hl">${ans}</span>`}]}}
+
+function genOA_expr(){
+  const a=ri(2,8),b=ri(2,8);const sum=a+b;const prod=a*b;
+  const exprs=[`${a} + ${b}`,`${a} × ${b}`,`(${a} + ${b}) × 2`,`${a} × ${b} + ${a}`];
+  const vals=[sum,prod,(a+b)*2,a*b+a];const idx=ri(0,3);
+  let opts=[vals[idx].toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(sum);aw(prod);aw(vals[idx]+ri(1,5));
+  return{standard:'5.OA.2',emoji:'📝',
+    story:`What is the value of this expression?`,
+    question:`${exprs[idx]} = ?`,visual:null,
+    answer:vals[idx].toString(),options:opts,
+    steps:[{label:'Identify operations',math:`Follow order of operations`},
+      {label:'Calculate',math:`${exprs[idx]} = <span class="hl">${vals[idx]}</span>`}]}}
+
+function genOA_pattern(){
+  const rule1=ri(2,5),rule2=rule1*2;
+  const seq1=[0,rule1,rule1*2,rule1*3,rule1*4];
+  const seq2=[0,rule2,rule2*2,rule2*3,rule2*4];
+  const next1=rule1*5,next2=rule2*5;
+  let opts=[next1.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(next1+rule1);aw(next1-rule1);aw(next2);
+  return{standard:'5.OA.3',emoji:'🔄',
+    story:`Pattern A: add ${rule1} → ${seq1.join(', ')}, ...<br>Pattern B: add ${rule2} → ${seq2.join(', ')}, ...<br>What is the <b>next number</b> in Pattern A?`,
+    question:`Pattern A next = ?`,visual:null,
+    answer:next1.toString(),options:opts,
+    steps:[{label:'Find the rule',math:`Pattern A adds <span class="hl">${rule1}</span> each time`},
+      {label:'Continue',math:`${seq1[4]} + ${rule1} = <span class="hl">${next1}</span>`},
+      {label:'Notice',math:`Each term in B is ${rule2/rule1}× the matching term in A`,explain:'The patterns have a multiplicative relationship'}]}}
+
+// ═══════════════════════════════════════════
+// 5.MD (Measurement & Volume)
+// ═══════════════════════════════════════════
+function genMD(){return[genMD_convert,genMD_volume,genMD_volWord,genMD_composite][ri(0,3)]()}
+
+function genMD_convert(){
+  const convs=[
+    {from:'feet',to:'inches',factor:12,unit:'ft→in'},
+    {from:'yards',to:'feet',factor:3,unit:'yd→ft'},
+    {from:'kg',to:'g',factor:1000,unit:'kg→g'},
+    {from:'meters',to:'cm',factor:100,unit:'m→cm'},
+    {from:'liters',to:'mL',factor:1000,unit:'L→mL'},
+  ];
+  const c=convs[ri(0,convs.length-1)];const val=ri(2,12);const ans=val*c.factor;
+  let opts=[ans.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(ans/2);aw(ans+c.factor);aw(val);
+  return{standard:'5.MD.1',emoji:'📏',
+    story:`Convert <b>${val} ${c.from}</b> to <b>${c.to}</b>.`,
+    question:`${val} ${c.from} = ? ${c.to}`,
+    visual:S.ruler(240,40),
+    answer:ans.toString(),options:opts,
+    steps:[{label:'Know the conversion',math:`1 ${c.from.slice(0,-1)||c.from} = ${c.factor} ${c.to}`},
+      {label:'Multiply',math:`${val} × ${c.factor} = <span class="hl">${ans.toLocaleString()}</span> ${c.to}`}]}}
+
+function genMD_volume(){
+  const l=ri(2,8),w=ri(2,6),h=ri(2,5);const vol=l*w*h;
+  let opts=[vol.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(l*w);aw(vol+l);aw(l+w+h);
+  return{standard:'5.MD.5',emoji:'📦',
+    story:`A box is <b>${l} cm</b> long, <b>${w} cm</b> wide, and <b>${h} cm</b> tall. What is the <b>volume</b>?`,
+    question:`V = ${l} × ${w} × ${h} = ? cm³`,
+    visual:S.box(l,w,h,130),
+    answer:vol.toString(),options:opts,
+    steps:[{label:'Volume formula',math:`V = length × width × height`},
+      {label:'Plug in',math:`V = ${l} × ${w} × ${h}`},
+      {label:'Calculate',math:`V = ${l*w} × ${h} = <span class="hl">${vol} cm³</span>`}]}}
+
+function genMD_volWord(){
+  const l=ri(3,10),w=ri(2,6),h=ri(2,5);const vol=l*w*h;
+  let opts=[vol.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(l*w);aw(vol+ri(5,20));aw(2*(l*w+l*h+w*h));
+  return{standard:'5.MD.5',emoji:'🏊',
+    story:`A fish tank is <b>${l} in</b> long, <b>${w} in</b> wide, and <b>${h} in</b> deep. How many cubic inches of water can it hold?`,
+    question:`Volume = ? cubic inches`,
+    visual:S.box(l,w,h,130),
+    answer:vol.toString(),options:opts,
+    steps:[{label:'Use V = l × w × h',math:`V = ${l} × ${w} × ${h}`},
+      {label:'Calculate step by step',math:`${l} × ${w} = ${l*w}, then ${l*w} × ${h} = <span class="hl">${vol}</span>`},
+      {label:'Answer',math:`<b>${vol} cubic inches</b>`}]}}
+
+function genMD_composite(){
+  const l1=ri(3,8),w1=ri(2,5),h1=ri(2,4);
+  const l2=ri(2,5),w2=ri(2,4),h2=ri(2,3);
+  const v1=l1*w1*h1,v2=l2*w2*h2,total=v1+v2;
+  let opts=[total.toString()];const aw=n=>{if(!opts.includes(n.toString())&&n>0)opts.push(n.toString())};
+  aw(v1);aw(v2);aw(total+v1);
+  return{standard:'5.MD.5c',emoji:'🏗️',
+    story:`An L-shaped building has two parts:<br>Part 1: ${l1}×${w1}×${h1} m<br>Part 2: ${l2}×${w2}×${h2} m<br>Find the <b>total volume</b>.`,
+    question:`Total Volume = ?`,visual:`<div style="display:flex;gap:10px;justify-content:center">${S.box(l1,w1,h1,100)}${S.box(l2,w2,h2,100)}</div>`,
+    answer:total.toString(),options:opts,
+    steps:[{label:'Volume of Part 1',math:`${l1}×${w1}×${h1} = ${v1} m³`},
+      {label:'Volume of Part 2',math:`${l2}×${w2}×${h2} = ${v2} m³`},
+      {label:'Add volumes',math:`${v1} + ${v2} = <span class="hl">${total} m³</span>`,explain:'Volume is additive!'}]}}
+
+// ═══════════════════════════════════════════
+// 5.G (Geometry)
+// ═══════════════════════════════════════════
+function genG(){return[genG_coord,genG_classify,genG_coordWord][ri(0,2)]()}
+
+function genG_coord(){
+  const x=ri(-4,4),y=ri(-4,4);
+  let opts=[`(${x}, ${y})`];
+  while(opts.length<4){const wx=ri(-4,4),wy=ri(-4,4);const w=`(${wx}, ${wy})`;if(!opts.includes(w))opts.push(w)}
+  opts=sh(opts);
+  return{standard:'5.G.1',emoji:'📍',
+    story:`Look at the coordinate plane. What are the <b>coordinates</b> of the point shown?`,
+    question:'What point is shown?',
+    visual:S.coord([[x,y]],200,200),
+    answer:`(${x}, ${y})`,options:opts,
+    steps:[{label:'Read x (horizontal)',math:`Go right/left from origin: x = <span class="hl">${x}</span>`},
+      {label:'Read y (vertical)',math:`Go up/down: y = <span class="hl">${y}</span>`},
+      {label:'Write as ordered pair',math:`<span class="hl">(${x}, ${y})</span>`,explain:'Always (x, y) — x first!'}]}}
+
+function genG_classify(){
+  const shapes=[
+    {name:'Square',props:'4 equal sides, 4 right angles',parent:'Rectangle, Rhombus, Parallelogram'},
+    {name:'Rectangle',props:'Opposite sides equal, 4 right angles',parent:'Parallelogram'},
+    {name:'Rhombus',props:'4 equal sides, opposite angles equal',parent:'Parallelogram'},
+    {name:'Trapezoid',props:'Exactly one pair of parallel sides',parent:'Quadrilateral'},
+    {name:'Parallelogram',props:'2 pairs of parallel sides, opposite sides equal',parent:'Quadrilateral'},
+  ];
+  const s=shapes[ri(0,shapes.length-1)];
+  const q=`A shape has: <b>${s.props}</b>. What is it?`;
+  let opts=[s.name];while(opts.length<4){const w=shapes[ri(0,shapes.length-1)].name;if(!opts.includes(w))opts.push(w)}
+  opts=sh(opts);
+  return{standard:'5.G.3',emoji:'🔷',
+    story:q,question:`Name this shape`,visual:null,
+    answer:s.name,options:opts,
+    steps:[{label:'Check the properties',math:s.props},
+      {label:'Classify',math:`This is a <span class="hl">${s.name}</span>`},
+      {label:'It belongs to',math:`Also a: ${s.parent}`,explain:'Shapes can belong to multiple categories!'}]}}
+
+function genG_coordWord(){
+  const x1=ri(1,4),y1=ri(1,4),x2=ri(1,4),y2=ri(1,4);
+  const dist=Math.abs(x1-x2)+Math.abs(y1-y2);
+  let opts=[`(${x1}, ${y1}) and (${x2}, ${y2})`];
+  // Just ask to plot or identify
+  const px=ri(0,4),py=ri(0,4);
+  opts=[`(${px}, ${py})`];
+  while(opts.length<4){const w=`(${ri(0,5)}, ${ri(0,5)})`;if(!opts.includes(w))opts.push(w)}
+  opts=sh(opts);
+  return{standard:'5.G.2',emoji:'🗺️',
+    story:`A treasure is buried at <b>${px} steps right</b> and <b>${py} steps up</b> from the origin. What coordinate is it at?`,
+    question:'Where is the treasure?',
+    visual:S.coord([[px,py]],200,200),
+    answer:`(${px}, ${py})`,options:opts,
+    steps:[{label:'Right = positive x',math:`x = ${px}`},
+      {label:'Up = positive y',math:`y = ${py}`},
+      {label:'Coordinate',math:`<span class="hl">(${px}, ${py})</span>`}]}}
+
+// INIT
+initTabs();updateUI();
+</script>
+</body>
+</html>
